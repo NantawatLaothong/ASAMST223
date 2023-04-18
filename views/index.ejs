@@ -1,0 +1,91 @@
+<%- layout('layouts/boilerplate')  %>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1 introduction my-5">
+                <div class="introduction-text">
+                    <h3 class="display-5">Introduction</h3>
+                    <h5 class="">&emsp;The Asian American community has a rich and diverse history in the United States, yet their contributions and struggles are often overlooked or erased in mainstream narratives of American history. To address this gap, a project has been initiated to create a comprehensive timeline of Asian American history, highlighting key events, individuals, and movements that have shaped the community's experiences and identities over time.
+                        The purpose of this project is to raise awareness and promote understanding of Asian American history, as well as to celebrate the community's achievements and resilience in the face of adversity. By creating a timeline that spans from the earliest Asian immigrants to the present day, this project aims to provide a comprehensive and accessible resource for educators, scholars, and the general public to learn about Asian American history and its significance in shaping the fabric of American society.
+                    </h5>
+                    <a href="#timeline-embed" class="btn btn-primary">Click to See Timeline</a>
+                </div>
+            </div>
+        </div>
+        <div id='timeline-embed' style="width: 100%; height: 600px"></div>
+        <div class="col-10 offset-1 mt-5 project">
+          <div class="project-upper text-center introduction-text" id="projects">
+            <h1 class="display-5">Projects</h1>
+            <h5 class="introduction-text">Asian Americans have played a significant role in shaping the history and culture of the United States, yet their contributions are often overlooked or underrepresented in mainstream narratives. To combat this, there have been numerous projects that aim to promote Asian American history and increase awareness of the diverse experiences and cultures of Asian Americans.</h5>
+            <a href="/projects/new" class="btn btn-primary text-center">Upload Project</a>
+          </div>
+          <div class="row">
+            <div class="col-11 offset-1">
+              <div class="grid-container">
+                <% projects.forEach(project=>{ %>
+                  <a href="/projects/<%= project._id %>">
+                  <div class="grid-item project-item">
+                    <img src="<%= project.imageURL.url %>" alt="" class="project-thumbnail">
+                    <div class="project__overlay">
+                      <div class="project__overlay__content">
+                          <div class="project__title"><%= project.title %></div>
+                          <div class="project__creator"></div>
+                            <p>By <%= project.author %></p>
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+                </a>
+                  <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div mb-5>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-11 offset-1 text-center">
+          <h1 class="display-5">About the Developers</h1>
+          <div class="row mt-5">
+            <div class="col-3 offset-1 profile">
+              <img src="/images/profile.jpg" alt="" class="img-fluid profile-img grayscale">
+              <div class="profile-content mt-3">
+                <p class="display-6">Earth Laothong</p>
+                <p>Earth is a skilled software developer with a passion for creating innovative educational tools. With his expertise, creativity, and dedication, he is always eager to take on new challenges and contribute to the technology industry. In his free time, Earth enjoys cultivating gourmet mushrooms and playing video games with friends.</p>
+              </div>
+            </div>
+            <div class="col-3 offset-4 profile">
+              <img src="/images/jingyiProfile.png" alt="" class="img-fluid profile-img grayscale">
+              <div class="profile-content mt-3">
+                <p class="display-6">Jingyi Chen</p>
+                <p>Jingyi Chen is a skilled software developer with a passion for creating innovative educational tools. He enjoys cultivating gourmet mushrooms and spending time with friends playing video games. With his expertise, dedication, and creativity, Earth is always eager to take on new challenges and contribute to the growth and progress of the technology industry.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- contact -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+            <div class="">
+              <div class="text-center">
+                <h3 class="text-center">Contact Us</h3>
+                <hr>
+                <p>If you have any questions or bug reports, please feel free to email us at <a href="mailto:nantawat.laothong001@umb.edu">nantawat.laothong001@umb.edu</a> or <a href="mailto:jingyichen20@gmail.com">jingyichen20@gmail.com</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<script>
+  var grid = document.querySelector('.grid-container');
+var masonry = new Masonry(grid, {
+  itemSelector: '.grid-item',
+  // columnWidth: 200
+  fitWidth:true,
+});
+</script>

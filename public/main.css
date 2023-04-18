@@ -1,0 +1,62 @@
+
+.introduction-text h5{
+    line-height: 2em;
+}
+
+.project-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.project-item {
+    border: solid 1px black;
+}
+
+.grid {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.grid-item {
+  width: 300px;
+  margin: 1px;
+}
+
+
+/* overlay */
+.project-thumbnail {
+    max-height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* positioning the overlay on top of the art container */
+/* overlay is 0 by default and will be 1 when hovered */
+.project__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    color: #fff;
+}
+
+
+.project__overlay:hover {
+    opacity: 1;
+}
+
+.project__overlay__content{
+    width: 100%;
+    padding: 1em 1.5em;
+    position: absolute;
+    /* bottom: 0; */
+    /* text-align: center; */
+}
+
+.profile-img {
+    border-radius: 50% !important;
+    /* filter: grayscale(100%); */
+}

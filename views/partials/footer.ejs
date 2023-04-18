@@ -1,0 +1,37 @@
+<footer class="bg-dark text-light py-3 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>Copyright &copy; 2023 Nantawat Laothong</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-md-end">Designed by Nantawat Laothong</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <script type="text/javascript">
+        // The TL.Timeline constructor takes at least two arguments:
+        // the id of the Timeline container (no '#'), and
+        // the URL to your JSON data file or Google spreadsheet.
+        // the id must refer to an element "above" this code,
+        // and the element must have CSS styling to give it width and height
+        // optionally, a third argument with configuration options can be passed.
+        // See below for more about options.
+        // async function make_the_json() {
+        //     const response = await fetch("timeline.json");
+        //     const json = await response.json();
+        //     console.log(json);
+        // }   
+        let timeline_json;
+        $.getJSON('./timeline.json', function(data){
+            // console.log(data)
+            timeline = new TL.Timeline('timeline-embed', data);
+        });
+        // console.log(timeline_json);
+        //
+    </script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+     <!-- CKEditor 4 script -->
+     <script src="https://cdn.ckeditor.com/4.16.0/full-all/ckeditor.js"></script>
+        

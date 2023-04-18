@@ -1,0 +1,15 @@
+<%- layout('layouts/boilerplate')  %>
+<style>
+    
+</style> 
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-10 offset-1 project">
+            <div class="project-content">
+                <p class="display-3"><%= project.title %> <a href="/projects/<%= project._id %>/edit" class="btn btn-primary"><span>Edit</span></a></p>
+                <p class="display-6">By <%= project.author %></p>
+                <%- project.body %>
+            </div>
+        </div>
+    </div>
+</div>

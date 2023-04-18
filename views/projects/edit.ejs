@@ -1,0 +1,32 @@
+<%- layout('layouts/boilerplate')  %> 
+<div class="container mt-5">
+    <div class="row">
+        
+        <div class="col-10 offset-1 introduction my-5">
+            <p class="display-4">Edit Project</p>
+            <form method="POST" action="/projects/<%= project._id %>?_method=PUT" enctype="multipart/form-data">
+                <div class="form-group mb-3">
+                    <label for="projectTitle">Title</label>
+                    <input type="text" name="title" class="form-control" id="projectTitleInput" value="<%= project.title %>" placeholder="Project Name">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="projectAuthor">Author/Authors</label>
+                    <input type="text" name="author" class="form-control" id="projectAuthorInput" value="<%= project.author %>" placeholder="Author Names">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="projectEditCode">EditCode</label>
+                    <input type="text" name="editCode" class="form-control" id="editCodeInput"  placeholder="Edit code">
+                  </div>
+                  <img src="<%= project.imageURL.url %>" alt="" class="img-fluid">
+                  <div class="form-group mb-3">
+                    <label for="fileUpload">Thumbnail</label>
+                    <input type="file" class="form-control-file" id="fileUpload" name="fileUpload">
+                  </div>
+                <textarea name="editor" id="editor" class="mb-3"><%= project.body %></textarea>
+                <button type="submit" class="btn btn-primary mt-3">Update</button>
+            </form>
+        </div>
+<script>
+CKEDITOR.replace('editor');
+
+</script>
