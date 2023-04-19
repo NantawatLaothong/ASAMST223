@@ -28,7 +28,7 @@ const projectRouter = require('./routes/projects');
 // database connection
 async function connect(){
     // edit here
-    mongoose.connect(process.env.DATABASE_URL);
+    mongoose.connect(databaseUrl);
 }
 
 connect().then(res=>console.log('DB connected'))

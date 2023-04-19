@@ -9,9 +9,9 @@ const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
 const multerS3Transform = require('multer-s3-transform');
 // s3 configuration
-const s3AccessKey = process.env.S3_ACCESS_KEY
-const s3SecretKey = process.env.S3_SECRET_ACCESS_KEY
-const s3Bucket = process.env.S3_BUCKET_REGION
+const s3AccessKey = process.env.S3Key;
+const s3SecretKey = process.env.s3Secret;
+const s3Bucket = "us-east-1";
 const sharp = require('sharp');
 
 const s3 = new aws.S3({
@@ -154,7 +154,8 @@ router.get('/:id', async(req, res)=>{
 router.put('/:id', upload.single('fileUpload'), async(req, res)=>{
   try {
     const {id} = req.params;
-    const {title, editor, editCode, file, author} = req.body;
+    // const {title, editor, editCode, file, author} = req.body;
+    const {title, editor, file, author} = req.body;
     const project = await Project.findByIdAndUpdate({_id: id}, {
       title: title,
       body: editor,
@@ -163,14 +164,17 @@ router.put('/:id', upload.single('fileUpload'), async(req, res)=>{
     if (req.file) {
       project.imageURL.url = req.file.location,
       project.imageURL.filename = req.file.key
-    } 
-    if (editCode == project.editCode){
-      await project.save();
-      console.log(`${editCode} and ${project.editCode}`)
-      res.redirect(`/projects/${id}`);
-    } else {
-      res.send('the edit code is wrong');
     }
+    await project.save();
+    // console.log(`${editCode} and ${project.editCode}`)
+    res.redirect(`/projects/${id}`); 
+    // if (editCode == project.editCode){
+    //   await project.save();
+    //   console.log(`${editCode} and ${project.editCode}`)
+    //   res.redirect(`/projects/${id}`);
+    // } else {
+    //   res.send('the edit code is wrong');
+    // }
   } catch(err){
     console.log('error occured in edit')
     console.log(err)

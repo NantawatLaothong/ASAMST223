@@ -38,10 +38,10 @@
                     <label for="projectAuthor">Author/Authors</label>
                     <input type="text" name="author" class="form-control" id="projectAuthorInput" value="<%= project.author %>" placeholder="Author Names">
                   </div>
-                  <div class="form-group mb-3">
+                  <!-- <div class="form-group mb-3">
                     <label for="projectEditCode">EditCode</label>
                     <input type="text" name="editCode" class="form-control" id="editCodeInput"  placeholder="Edit code">
-                  </div>
+                  </div> -->
                   <!-- <img src="<%= project.imageURL.url %>" alt="" class="img-fluid"> -->
                   <div class="form-group mb-3">
                     <label for="fileUpload">Thumbnail</label>
@@ -52,6 +52,8 @@
             </form>
         </div>
 <script>
-CKEDITOR.replace('editor');
+CKEDITOR.replace('editor', {
+  ignoreEmptyParagraph: true
+});
 
 </script>
