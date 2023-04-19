@@ -60,3 +60,19 @@
     border-radius: 50% !important;
     /* filter: grayscale(100%); */
 }
+
+/* .project-title {
+    position: relative;
+}
+
+.project-title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background: #000; */
+    opacity: 0.8;
+    z-index: -2;
+  } */

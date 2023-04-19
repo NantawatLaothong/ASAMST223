@@ -40,13 +40,18 @@ app.set('view engine', 'ejs')
 app.set('views', path.resolve(__dirname, 'views'));
 app.engine('ejs', ejsMate);
 app.use(methodOverride('_method'));
+
 app.get('/', async(req, res)=>{
     const projects = await Project.find();
     res.render('index', {projects})
 })
 
+app.get('/about', async(req, res)=>{
+    res.render('about');
+})
+
 app.use('/projects', projectRouter);
 
 app.listen(PORT, ()=>{
-    console.log(`app is running on port${PORT}`)
+    console.log(`app is running on port ${PORT}`)
 })

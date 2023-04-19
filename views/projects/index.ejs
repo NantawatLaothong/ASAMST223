@@ -1,0 +1,46 @@
+<%- layout('layouts/boilerplate')  %>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1 mt-5 project animate__animated animate__fadeIn" id="projects">
+            <div class="project-upper text-center introduction-text mb-2" >
+              <h1 class="display-5">Projects</h1>
+              <h5 class="introduction-text">Asian Americans have played a significant role in shaping the history and culture of the United States, yet their contributions are often overlooked or underrepresented in mainstream narratives. To combat this, there have been numerous projects that aim to promote Asian American history and increase awareness of the diverse experiences and cultures of Asian Americans.</h5>
+              <a href="/projects/new" class="btn btn-primary text-center mb-3">Upload Project</a>
+            </div>
+            <div class="row">
+              <div class="col-11 offset-1">
+                <div class="grid-container">
+                  <% projects.forEach(project=>{ %>
+                    <a href="/projects/<%= project._id %>">
+                    <div class="grid-item project-item">
+                      <img src="<%= project.imageURL.url %>" alt="" class="project-thumbnail">
+                      <div class="project__overlay">
+                        <div class="project__overlay__content">
+                            <div class="project__title"><%= project.title %></div>
+                            <div class="project__creator"></div>
+                              <p>By <%= project.author %></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    </a>
+                    <% }) %>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>
+<script>
+    function masonry_init(){
+        var grid = document.querySelector('.grid-container');
+        var masonry = new Masonry(grid, {
+        itemSelector: '.grid-item',
+        // columnWidth: 200,
+        gutter:2,
+        fitWidth:true,
+    });
+    }
+    window.onload = masonry_init;
+  </script>

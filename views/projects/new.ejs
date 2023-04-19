@@ -1,7 +1,6 @@
 <%- layout('layouts/boilerplate')  %> 
 <div class="container mt-5">
     <div class="row">
-        
         <div class="col-10 offset-1 introduction my-5">
             <p class="display-4">New Project</p>
             <form method="POST" action="/projects" enctype="multipart/form-data">
@@ -24,8 +23,9 @@
                 <textarea name="editor" id="editor" class="mb-3"></textarea>
                 <button type="submit" class="btn btn-primary mt-3">Create</button>
             </form>
-            
-        </div>
+          </div>
+      </div>
+    </div>
 
 <script>
 CKEDITOR.replace('editor');

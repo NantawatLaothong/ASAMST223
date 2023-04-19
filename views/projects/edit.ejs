@@ -4,6 +4,31 @@
         
         <div class="col-10 offset-1 introduction my-5">
             <p class="display-4">Edit Project</p>
+            <!-- delete button -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
+              Delete
+            </button>      
+            <!-- delete modal  -->
+            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm deletion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Are you sure you want to delete this item?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="/projects/<%= project._id %>/delete" class="btn btn-danger" id="confirmDeleteButton">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+              <!-- delete modal ends -->
             <form method="POST" action="/projects/<%= project._id %>?_method=PUT" enctype="multipart/form-data">
                 <div class="form-group mb-3">
                     <label for="projectTitle">Title</label>
@@ -17,7 +42,7 @@
                     <label for="projectEditCode">EditCode</label>
                     <input type="text" name="editCode" class="form-control" id="editCodeInput"  placeholder="Edit code">
                   </div>
-                  <img src="<%= project.imageURL.url %>" alt="" class="img-fluid">
+                  <!-- <img src="<%= project.imageURL.url %>" alt="" class="img-fluid"> -->
                   <div class="form-group mb-3">
                     <label for="fileUpload">Thumbnail</label>
                     <input type="file" class="form-control-file" id="fileUpload" name="fileUpload">
