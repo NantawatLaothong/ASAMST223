@@ -9,9 +9,9 @@ const aws = require('aws-sdk');
 const multerS3 = require('multer-s3');
 const multerS3Transform = require('multer-s3-transform');
 // s3 configuration
-const s3AccessKey = process.env.S3Key;
-const s3SecretKey = process.env.s3Secret;
-const s3Bucket = "us-east-1";
+const s3AccessKey = process.env.S3_ACCESS_KEY;
+const s3SecretKey = process.env.S3_SECRET_ACCESS_KEY;
+const s3Bucket = process.env.S3_BUCKET_REGION;
 const sharp = require('sharp');
 
 const s3 = new aws.S3({
@@ -52,7 +52,7 @@ const upload = multer({
     storage: multerS3({
         // s3 
         s3: s3,
-        bucket: "asamst223",
+        bucket: process.env.S3_BUCKET,
         acl: 'public-read',
         metadata: function (req, file, cb) {
             cb(null, {fieldName: file.fieldname});
