@@ -228,7 +228,7 @@ router.post('/', upload.single('fileUpload'), async (req, res) => {
     project.imageURL.url = req.file.location,
     project.imageURL.filename = req.file.key
   } else {
-    project.imageURL.url = "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    project.imageURL.url = "https://asamst223.s3.amazonaws.com/default-bg.png"
   }
   await project.save()
   // console.log(req.body)
