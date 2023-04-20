@@ -1,14 +1,14 @@
 <%- layout('layouts/boilerplate')  %>
 <style>
     /* making footer stay at the bottom */
-    @media (min-width: 600px) {
+    @media (min-width: 300px) {
       body {
     margin: 0;
     padding: 0;
   }
   
   footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 5rem; /* Change this value to the desired height */
@@ -17,7 +17,7 @@
 
 </style>
 <br>
-<div class="container">
+<div class="container ">
     <div class="row">
         <div class="col-md-10 offset-md-1 mt-5 project animate__animated animate__fadeIn" id="projects">
             <div class="project-upper text-center introduction-text mb-2" >
