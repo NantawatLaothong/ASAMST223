@@ -17,7 +17,7 @@ const sharp = require('sharp');
 const s3 = new aws.S3({
     accessKeyId: s3AccessKey,
     secretAccessKey: s3SecretKey,
-    region: s3Bucket
+    region: "us-east-1"
 })
 
 // const transformation = sharp()
@@ -60,7 +60,8 @@ const upload = multer({
           key: function (req, file, cb) {
             cb(null, Date.now()+ "__" + file.originalname);
           }
-    })
+    }),
+    
 });
 
 
@@ -151,7 +152,10 @@ router.get('/:id', async(req, res)=>{
   //   // 
 })
 
-router.put('/:id', upload.single('fileUpload'), async(req, res)=>{
+router.put('/:id', upload.fields([
+  { name: 'fileUpload', maxCount: 1 },
+  { name: 'presentationUpload', maxCount: 1 }
+]), async(req, res)=>{
   try {
     const {id} = req.params;
     // const {title, editor, editCode, file, author} = req.body;
@@ -161,9 +165,15 @@ router.put('/:id', upload.single('fileUpload'), async(req, res)=>{
       body: editor,
       author: author,
     });
-    if (req.file) {
-      project.imageURL.url = req.file.location,
-      project.imageURL.filename = req.file.key
+    if(req.files){
+      if(req.files.fileUpload){
+        project.imageURL.url = req.files.fileUpload[0].location;
+        project.imageURL.filename = req.files.fileUpload[0].key;
+      }
+      if(req.files.presentationUpload){
+        project.presentationURL.url = req.files.presentationUpload[0].location
+        project.presentationURL.filename = req.files.presentationUpload[0].key
+      }
     }
     await project.save();
     // console.log(`${editCode} and ${project.editCode}`)
@@ -211,7 +221,10 @@ router.get('/:id/delete', async(req, res)=>{
   }
 })
 
-router.post('/', upload.single('fileUpload'), async (req, res) => {
+router.post('/', upload.fields([
+  { name: 'fileUpload', maxCount: 1 },
+  { name: 'presentationUpload', maxCount: 1 }
+]), async (req, res) => {
   // Handle POST request
   // const postData = req.body.editor;
   const {title, editor, editCode, file, author} = req.body;
@@ -223,10 +236,17 @@ router.post('/', upload.single('fileUpload'), async (req, res) => {
   })
   console.log(req.body);
   // save images to AWS
-  if(req.file){
+  if(req.files){
+    // console.log(req.files)
     // const compressedImage = await resizeImage(req.file, 800);
-    project.imageURL.url = req.file.location,
-    project.imageURL.filename = req.file.key
+    if(req.files.fileUpload){
+      project.imageURL.url = req.files.fileUpload[0].location;
+      project.imageURL.filename = req.files.fileUpload[0].key;
+    }
+    if(req.files.presentationUpload){
+      project.presentationURL.url = req.files.presentationUpload[0].location
+      project.presentationURL.filename = req.files.presentationUpload[0].key
+    }
   } else {
     project.imageURL.url = "https://asamst223.s3.amazonaws.com/default-bg.png"
   }

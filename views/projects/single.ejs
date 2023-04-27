@@ -9,8 +9,11 @@
                 <!-- <div class="project-title p-5" style="background-image: url('<%= project.imageURL.url %>'); background-size: cover; " > -->
                     <div class="project-title py-5" >
                     <p class="display-3"><%= project.title %> <button class="btn btn-primary" data-toggle="modal" data-target="#EditModal">Edit</button></p>
-                    <p class="display-6">By <%= project.author %></p>
+                    <% if (project.presentationURL.url) { %>
+                      <p class="display-6">By <%= project.author %></p> <a href="<%= project.presentationURL.url %>" target="_blank" class="btn btn-primary">Download Presentation</a>
+                    <% } %>
                 </div>
+                
                 <div class="project-text">
                     <%- project.body %>
                 </div>
@@ -41,6 +44,7 @@
       </div>
     </div>
   </div>
+  
 
 <script>
     $('#checkBtn').click(function(){

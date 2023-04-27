@@ -11,6 +11,10 @@ const userSchema = new Schema({
         url: String,
         filename: String
     },
+    presentationURL: {
+        url: String,
+        filename: String
+    },
     author: String
 }, { timestamps: true });
 
