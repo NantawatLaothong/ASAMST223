@@ -17,7 +17,7 @@ const sharp = require('sharp');
 const s3 = new aws.S3({
     accessKeyId: s3AccessKey,
     secretAccessKey: s3SecretKey,
-    region: "us-east-1"
+    region: s3Bucket
 })
 
 // const transformation = sharp()
